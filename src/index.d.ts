@@ -2,9 +2,24 @@ interface CreepMemory {
   /**
    * 该 creep 的角色
    */
-  role: string
+  role?: string
   /**
    * 状态
    */
-  status: number
+  status?: number
+
+  working?: Boolean
+
+  sourceId?: Id<Source>
+
+  // 是否已发送健康信息
+  hasSendRebirth?: Boolean
+}
+
+interface Memory {
+  creepConfigs?: {}
+}
+
+interface SpawnMemory {
+  spawnList: string[]
 }

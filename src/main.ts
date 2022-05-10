@@ -1,16 +1,27 @@
 import { errorMapper } from './modules/errorMapper'
-import { sayHello } from './modules/utils'
-import roleHarvester from "./roleHarvester";
-import roleUpgrader from "./roleUpgrader";
+import MyCreep from './MyCreep';
+import JobFactory from './JobFactory';
+import SpawnTask from './SpawnTask'
+import TowerTask from './TowerTask';
 
-export const loop = errorMapper(() => {
-  for (var name in Game.creeps) {
-    var creep = Game.creeps[name];
-    if (creep.memory.role == 'harvester') {
-      roleHarvester.run(creep);
-    }
-    if (creep.memory.role == 'upgrader') {
-      roleUpgrader.run(creep);
+function dealMemory() {
+  for (const name in Memory.creeps) {
+    if (!Game.creeps[name]) {
+      delete Memory.creeps[name]
     }
   }
+}
+
+//  Game.spawns['Spawn1'].spawnCreep( [WORK,WORK, CARRY,CARRY, MOVE,MOVE], 'Upgrader2',     { memory: { role: 'upgrader' } } );
+export const loop = errorMapper(() => {
+  if (Game.time % 1000 == 0) dealMemory()
+  for (let name in Game.creeps) {
+    let creep = Game.creeps[name];
+    let myCreep = new MyCreep(creep)
+    myCreep.creepLogic = JobFactory.getJob(creep.memory.role)
+    myCreep.work()
+  }
+
+  new SpawnTask().work()
+  new TowerTask().work()
 })
