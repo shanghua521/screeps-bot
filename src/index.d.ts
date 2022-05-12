@@ -14,6 +14,10 @@ interface CreepMemory {
 
   // 是否已发送健康信息
   hasSendRebirth?: Boolean
+
+  currentConstructionSite?: Id<ConstructionSite>
+
+  currentContainer?: Id<StructureContainer>
 }
 
 interface Memory {
