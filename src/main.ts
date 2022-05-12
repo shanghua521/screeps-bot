@@ -12,7 +12,7 @@ function dealMemory() {
   }
 }
 
-//  Game.spawns['Spawn1'].spawnCreep( [WORK,WORK, CARRY,CARRY,MOVE, MOVE,MOVE], 'builder0',     { memory: { role: 'builder' } } );
+//  Game.spawns['Spawn1'].spawnCreep( [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE], 'upgrader5',     { memory: { role: 'upgrader' } } );
 export const loop = errorMapper(() => {
   if (Game.time % 1000 == 0) dealMemory()
   for (let name in Game.creeps) {
