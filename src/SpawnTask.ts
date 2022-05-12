@@ -2,22 +2,22 @@ class SpawnTask {
   private creepConfigs = [
     {
       role: 'harvester',
-      bodys: [WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+      bodys: [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
       sourceId: null,
       number: 1
     }, {
       role: 'upgrader',
-      bodys: [WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+      bodys: [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
       sourceId: "5bbcab669099fc012e6336ed" as Id<Source>,
       number: 1
     }, {
       role: 'builder',
-      bodys: [WORK, WORK, CARRY, MOVE, MOVE],
+      bodys: [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
       sourceId: null,
       number: 1
     }, {
       role: 'carrier',
-      bodys: [CARRY, CARRY, CARRY, MOVE, MOVE],
+      bodys: [CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
       sourceId: null,
       number: 1
     }
