@@ -3,7 +3,6 @@ import MyCreep from './MyCreep';
 import JobFactory from './JobFactory';
 import SpawnTask from './SpawnTask'
 import TowerTask from './TowerTask';
-
 function dealMemory() {
   for (const name in Memory.creeps) {
     if (!Game.creeps[name]) {
