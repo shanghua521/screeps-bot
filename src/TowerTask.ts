@@ -14,7 +14,7 @@ class TowerTask {
 
   private repairStructure() {
     let targets = this.room.find(FIND_STRUCTURES, {
-      filter: object => object.hits < object.hitsMax && object.structureType != STRUCTURE_WALL
+      filter: object => object.hits < object.hitsMax && object.structureType != STRUCTURE_WALL && object.structureType != STRUCTURE_RAMPART
     });
     if (targets.length != 0) {
       targets.sort((a, b) => a.hits - b.hits);

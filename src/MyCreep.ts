@@ -25,6 +25,12 @@ class MyCreep {
     if (!this.creep.memory.hasSendRebirth) {
       const health = this.isHealthy()
       if (!health) {
+        // 如果是 harvester，就从占用的 source 减去一个数量
+        if (this.creep.memory.role == 'harvester') {
+          let sourceHarvesterCount = Memory.sourceHarvesterCount
+          let sourceHarvester = sourceHarvesterCount.find((_sourceHarvester) => _sourceHarvester.sourceId == this.creep.memory.sourceId)
+          sourceHarvester.count--
+        }
         // 指定任务
         new SpawnTask().addTask(this.creep.memory.role)
         this.creep.memory.hasSendRebirth = true

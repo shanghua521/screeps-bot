@@ -37,7 +37,7 @@ class RoleHarvester implements CreepLifeCycle {
       if (creep.pos.isEqualTo(container.pos)) {
         creep.drop(RESOURCE_ENERGY)
       } else {
-        creep.moveTo(container)
+        creep.moveTo(container, { reusePath: 1 })
       }
     }
     return creep.store[RESOURCE_ENERGY] <= 0

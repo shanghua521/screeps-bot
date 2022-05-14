@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rollup -cw",
     "push": "rollup -cw --environment DEST:main",
-    "local": "rollup -cw --environment DEST:local"
+    "local": "rollup -cw --environment DEST:local",
+    "custom": "rollup -cw --environment DEST:custom"
   },
   "keywords": [],
   "author": "",

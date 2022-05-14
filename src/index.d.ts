@@ -18,12 +18,23 @@ interface CreepMemory {
   currentConstructionSite?: Id<ConstructionSite>
 
   currentContainer?: Id<StructureContainer>
+
+  fixTargetHits?: number,
+
+  fixTargetId: Id<StructureWall>
 }
 
 interface Memory {
   creepConfigs?: {}
+
+  sourceHarvesterCount?: SourceHarvesterCount[]
 }
 
 interface SpawnMemory {
   spawnList: string[]
+}
+
+interface SourceHarvesterCount {
+  sourceId: Id<Source>,
+  count: number
 }

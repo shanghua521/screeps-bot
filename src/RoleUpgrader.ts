@@ -16,7 +16,7 @@ class RoleUpgrader implements CreepLifeCycle {
       container = controller.pos.findClosestByRange(FIND_STRUCTURES, {
         filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0
       })
-      creep.memory.currentContainer = container.id
+      if (container) creep.memory.currentContainer = container.id
     }
     container = controller.pos.findClosestByRange(FIND_STRUCTURES, {
       filter: (structure) => (structure.structureType == STRUCTURE_CONTAINER) && structure.store.getUsedCapacity(RESOURCE_ENERGY) > 0
@@ -28,8 +28,8 @@ class RoleUpgrader implements CreepLifeCycle {
       }
       if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) creep.moveTo(container, { reusePath: 10 })
     } else {
-      let sources = creep.room.find(FIND_SOURCES);
-      if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) creep.moveTo(sources[0])
+      let storage = creep.room.storage
+      if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) creep.moveTo(storage)
     }
     // 自己身上的能量装满了，返回 true（切换至 target 阶段）
     return creep.store.getFreeCapacity() <= 0
