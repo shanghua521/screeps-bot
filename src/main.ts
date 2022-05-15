@@ -3,6 +3,7 @@ import MyCreep from './MyCreep';
 import JobFactory from './JobFactory';
 import SpawnTask from './SpawnTask'
 import TowerTask from './TowerTask';
+import { LinkTask } from './LinkTask';
 function dealMemory() {
   for (const name in Memory.creeps) {
     if (!Game.creeps[name]) {
@@ -23,4 +24,5 @@ export const loop = errorMapper(() => {
 
   new SpawnTask().work()
   new TowerTask().work()
+  new LinkTask().work()
 })

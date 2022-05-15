@@ -1,7 +1,8 @@
 import RoleBuilder from "./RoleBuilder";
 import RoleCarrier from "./RoleCarrier";
+import RoleCarrier2 from "./RoleCarrier2";
+
 import RoleHarvester from "./RoleHarvester";
-import RoleHarvester2 from "./RoleHarvester2";
 import RoleUpgrader from "./RoleUpgrader";
 
 class JobFactory {
@@ -9,13 +10,13 @@ class JobFactory {
   static getJob(role: string) {
     switch (role) {
       case "harvester":
-        return RoleHarvester2.instance
+        return RoleHarvester.instance
       case "upgrader":
         return RoleUpgrader.instance
       case "builder":
         return RoleBuilder.instance
       case "carrier":
-        return RoleCarrier.instance
+        return RoleCarrier2.instance
       default:
         return RoleHarvester.instance
     }

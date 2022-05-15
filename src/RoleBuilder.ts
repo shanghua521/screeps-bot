@@ -41,8 +41,8 @@ class RoleBuilder implements CreepLifeCycle {
       if (creep.withdraw(container, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) creep.moveTo(container)
     } else {
       // 一个都不符合要求，找最近的 source，去 source 拿
-      let source = creep.pos.findClosestByRange(FIND_SOURCES);
-      if (creep.harvest(source) == ERR_NOT_IN_RANGE) creep.moveTo(source)
+      let storage = creep.room.storage
+      if (creep.withdraw(storage, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) creep.moveTo(storage)
     }
     // 自己身上的能量装满了，返回 true（切换至 target 阶段）
     return creep.store.getFreeCapacity() <= 0

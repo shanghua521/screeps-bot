@@ -31,6 +31,10 @@ class MyCreep {
           let sourceHarvester = sourceHarvesterCount.find((_sourceHarvester) => _sourceHarvester.sourceId == this.creep.memory.sourceId)
           sourceHarvester.count--
         }
+        // 如果自己是 upgrader，把自己从 controller Link 占用删掉
+        if (this.creep.memory.role == 'upgrader') {
+          Memory.controllerLinkCreepCount = Memory.controllerLinkCreepCount.filter((item) => item != this.creep.id)
+        }
         // 指定任务
         new SpawnTask().addTask(this.creep.memory.role)
         this.creep.memory.hasSendRebirth = true

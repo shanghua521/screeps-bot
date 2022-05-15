@@ -17,20 +17,27 @@ class RoleCarrier implements CreepLifeCycle {
   }
 
   public target(creep: Creep) {
+    let storage = creep.room.storage
+
     let targets = creep.room.find(FIND_STRUCTURES, {
       filter: (structure) => {
         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
           structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
       }
     });
+    // let linkSource = storage.pos.findClosestByRange(FIND_STRUCTURES, {
+    //   filter: (structure) => (structure.structureType == STRUCTURE_LINK && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0) && structure.cooldown == 0
+    // }) as StructureLink
+    // if (linkSource) targets.push(linkSource)
+
     let towers = creep.room.find(
       FIND_MY_STRUCTURES, {
       filter: (structure) => {
         return structure.structureType == STRUCTURE_TOWER && structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
       }
     });
-    let storage = creep.room.storage
     targets.push(...towers)
+
     if (storage) targets.push(storage)
     if (targets.length > 0) {
       if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {

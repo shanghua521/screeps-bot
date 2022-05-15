@@ -25,9 +25,19 @@ interface CreepMemory {
 }
 
 interface Memory {
+  /**
+* 该 creep 的角色
+*/
   creepConfigs?: {}
 
   sourceHarvesterCount?: SourceHarvesterCount[]
+
+  storageLink?: Id<StructureLink>
+
+  controllerLink?: Id<StructureLink>
+
+  // controller 旁的 link 有多少人用
+  controllerLinkCreepCount?: Id<Creep>[]
 }
 
 interface SpawnMemory {
